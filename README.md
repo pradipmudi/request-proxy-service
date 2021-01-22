@@ -5,6 +5,17 @@ To run the project locally :
 Simply clone the project and load in into any IDE, then just run RequestProxyServiceApplication.java class
 Note : Make sure to configure the port in application.yml, in case the mentioned port is already occupied
 
+Note : 
+--
+While running from some IDE, make sure you delete other files except the folders(not mentioned in the readme) and these files mentioned below : 
+- .DS_Store
+- .gitignore
+- README.md
+- fwProxyService.jks
+- mvnw
+- mvnw.cmd
+- pom.xml
+
 1.1. Configuration
 --
 Usually, we only need to configure the build plugin:
