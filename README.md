@@ -95,8 +95,8 @@ As mentioned before, the Maven Spring Boot plugin finds the main class and gener
 
 The resulting MANIFEST.MF has some additional lines:
 
-Start-Class: com.baeldung.webjar.WebjarsdemoApplication
-Main-Class: org.springframework.boot.loader.WarLauncher
+- Start-Class: com.fw.https.RequestProxyServiceApplication
+- Main-Class: org.springframework.boot.loader.WarLauncher
 In particular, we can observe that the last one specifies the Spring Boot class loader launcher to use.
 
 1.5. Inside a Jar File
