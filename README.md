@@ -9,34 +9,63 @@ Note : Make sure to configure the port in application.yml, in case the mentioned
 --
 Usually, we only need to configure the build plugin:
 
-<build>
-    <plugins>
-        ...
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-        </plugin>
-        ...
-    </plugins>
-</build>
-But our example project contains more than one main class, so we have to tell Java which class to run, by either configuring the plugin:
 
-<plugin>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-maven-plugin</artifactId>
-    <executions>
-        <execution>
-            <configuration>
-                <mainClass>com.baeldung.webjar.WebjarsdemoApplication</mainClass>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
-or by setting the start-class property:
 
-<properties>
-    <start-class>com.baeldung.webjar.WebjarsdemoApplication</start-class>
-</properties>
+
+
+
+
+
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	<groupId>com.example</groupId>
+	<artifactId>request-proxy-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>request-proxy-service</name>
+	
+	<description>Typical proxy service to replay an HTTPS request </description>
+	
+	<properties>
+		<java.version>11</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.google.api-client</groupId>
+		    <artifactId>google-api-client</artifactId>
+		    <version>1.31.2</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
 
 1.2. Running the Application
 --
@@ -93,53 +122,5 @@ Spring-Boot-Version: 2.4.2.RELEASE
 Main-Class: org.springframework.boot.loader.JarLauncher
 
 
-Needed Artifacts for the project, mentioning the 'pom.xml' file from the project:
 
-
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>request-proxy-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>request-proxy-service</name>
-	<description>Typical proxy service to replay an HTTPS request </description>
-
-	<properties>
-		<java.version>11</java.version>
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-		    <groupId>com.google.api-client</groupId>
-		    <artifactId>google-api-client</artifactId>
-		    <version>1.31.2</version>
-		</dependency>
-
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
-</project>
+	
