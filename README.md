@@ -41,9 +41,9 @@ or by setting the start-class property:
 --
 Now, we can run our example war with two simple commands:
 
-$ mvn clean package spring-boot:repackage
-$ java -jar target/spring-boot-ops.war
-More details regarding how to run a jar file can be found in our article Run JAR Application With Command Line Arguments.
+- $ mvn clean package spring-boot:repackage
+
+- $ java -jar target/spring-boot-ops.war
 
 1.3. Inside the War File
 --
@@ -77,15 +77,19 @@ To better appreciate the advantages of the plugin, we can try changing the pom p
 
 We can now observe that our fat jar is organized a bit differently from our previous war file:
 
-All our classes and resources folders are now located under BOOT-INF/classes
+All our classes and resources folders are now located under 
+BOOT-INF/classes
 BOOT-INF/lib holds all the external libraries
 Without the plugin, the lib folder would not exist, and all the content of BOOT-INF/classes would be located in the root of the package.
 
 1.6. Inside the Jar Manifest
 --
 Also the MANIFEST.MF has changed, featuring these additional lines:
+
 Spring-Boot-Classes: BOOT-INF/classes/
 Spring-Boot-Lib: BOOT-INF/lib/
 Spring-Boot-Version: 2.4.2.RELEASE
 Main-Class: org.springframework.boot.loader.JarLauncher
+
+
 Spring-Boot-Classes and Spring-Boot-Lib are particularly interesting, as they tell us where the class loader is going to find classes and external libraries.
