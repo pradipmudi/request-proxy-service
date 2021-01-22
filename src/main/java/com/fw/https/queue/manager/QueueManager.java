@@ -21,7 +21,7 @@ public class QueueManager{
 				requestQueue.poll();
 			}
 			
-			if(requestQueue.size()<2){
+			if(requestQueue.size()<50){
 				requestQueue.add(requestStatus);
 				requestQueueMap.put(clientID, requestQueue);
 				return true;
