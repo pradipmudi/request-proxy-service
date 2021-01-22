@@ -89,21 +89,3 @@ Spring-Boot-Lib: BOOT-INF/lib/
 Spring-Boot-Version: 2.4.2.RELEASE
 Main-Class: org.springframework.boot.loader.JarLauncher
 Spring-Boot-Classes and Spring-Boot-Lib are particularly interesting, as they tell us where the class loader is going to find classes and external libraries.
-
-SSL Key Generation command :
---
-keytool -genkey -alias fw-https -storetype JKS -keyalg RSA -keysize 2048 -validity 365 -keystore fwProxyService.jks
-
-
-This replay Https service with return a result of google searchquery page : 
-
-Request: 
-https://localhost:7777/response?q=facebook&client=1
-
-Output: 
-This will return a google htmml page
-
-
-
-
-
