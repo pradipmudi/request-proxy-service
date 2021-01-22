@@ -128,7 +128,7 @@ Make Request :
 Use Browser or Postman or some driver program to make requests : 
 - 
 - Target : https://localhost:7777/response?q=query&client=user1 
-- Here I'm replaying(Also other messages based on other fators such as non-http request, rate limiting, wrong address etc.) :
+- Here I'm replaying(Also other messages based on other factors such as non-http request, rate limiting, wrong api etc.) :
 www.google.com/?q=query
 
 
