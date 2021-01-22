@@ -123,4 +123,14 @@ Main-Class: org.springframework.boot.loader.JarLauncher
 
 
 
-	
+Make Request :
+---
+Use Browser or Postman or some driver program to make requests : 
+- 
+- Target : https://localhost:7777/response?q=query&client=user1 
+- Here I'm replaying :
+www.google.com/?q=query
+
+Where, q = query
+       client = clientID based on which we will manage the requests
+       **(Assuming some external application will redirect each unique client with it's unique client ID)
