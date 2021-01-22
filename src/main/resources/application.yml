@@ -1,0 +1,8 @@
+server:
+  ssl:
+    key-alias: fw-https
+    key-store: classpath:fwProxyService.jks
+    key-store-type: JKS
+    key-password: changeit
+    
+  port: 7777
