@@ -1,6 +1,7 @@
 # request-proxy-service
 
 To run the project locally : 
+--
 Simply clone the project and load in into any IDE, then just run RequestProxyServiceApplication.java class
 Note : Make sure to configure the port in application.yml, in case the mentioned port is already occupied
 
