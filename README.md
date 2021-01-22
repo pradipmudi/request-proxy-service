@@ -128,10 +128,12 @@ Make Request :
 Use Browser or Postman or some driver program to make requests : 
 - 
 - Target : https://localhost:7777/response?q=query&client=user1 
-- Here I'm replaying :
+- Here I'm replaying(Also other messages based on other fators such as non-http request, rate limiting, wrong address etc.) :
 www.google.com/?q=query
 
-Where, q = query
-       client = clientID based on which we will manage the requests
-       
-       *(Assuming some external application will redirect each unique client with it's unique client ID)
+
+Where, 
+
+	q = query
+        client = clientID based on which we will manage the requests
+       (Assuming some external application will redirect each unique client with it's unique client ID)
