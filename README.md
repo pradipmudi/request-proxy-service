@@ -5,7 +5,7 @@ Simply clone the project and load in into any IDE, then just run RequestProxySer
 Note : Make sure to configure the port in application.yml, in case the mentioned port is already occupied
 
 1.1. Configuration
-
+--
 Usually, we only need to configure the build plugin:
 
 <build>
@@ -36,8 +36,9 @@ or by setting the start-class property:
 <properties>
     <start-class>com.baeldung.webjar.WebjarsdemoApplication</start-class>
 </properties>
-1.2. Running the Application
 
+1.2. Running the Application
+--
 Now, we can run our example war with two simple commands:
 
 $ mvn clean package spring-boot:repackage
@@ -45,7 +46,7 @@ $ java -jar target/spring-boot-ops.war
 More details regarding how to run a jar file can be found in our article Run JAR Application With Command Line Arguments.
 
 1.3. Inside the War File
-
+--
 To understand better how the command mentioned above can run a full server application, we can take a look into our spring-boot-ops.war.
 
 If we uncompress it and peek inside, we find the usual suspects:
@@ -57,8 +58,9 @@ That's not all though, as there are some folders specific to our fat package con
 
  WEB-INF/lib-provided, containing external libraries required when running embedded but not required when deploying
 org/springframework/boot/loader, which holds the Spring Boot custom class loader — this library is responsible for loading our external dependencies and making them accessible in runtime
-1.4. Inside the War Manifest
 
+1.4. Inside the War Manifest
+--
 As mentioned before, the Maven Spring Boot plugin finds the main class and generates the configuration needed for running the java command.
 
 The resulting MANIFEST.MF has some additional lines:
@@ -68,7 +70,7 @@ Main-Class: org.springframework.boot.loader.WarLauncher
 In particular, we can observe that the last one specifies the Spring Boot class loader launcher to use.
 
 1.5. Inside a Jar File
-
+--
 Due to the default packaging strategy, our war packaging scenario doesn't differ much, whether we use the Spring Boot Maven Plugin or not.
 
 To better appreciate the advantages of the plugin, we can try changing the pom packaging configuration to jar and run mvn clean package again.
@@ -80,7 +82,7 @@ BOOT-INF/lib holds all the external libraries
 Without the plugin, the lib folder would not exist, and all the content of BOOT-INF/classes would be located in the root of the package.
 
 1.6. Inside the Jar Manifest
-
+--
 Also the MANIFEST.MF has changed, featuring these additional lines:
 Spring-Boot-Classes: BOOT-INF/classes/
 Spring-Boot-Lib: BOOT-INF/lib/
