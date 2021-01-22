@@ -135,5 +135,5 @@ www.google.com/?q=query
 Where, 
 
 	 - q = query
-         - client = clientID based on which we will manage the requests
+     - client = clientID based on which we will manage the requests
        (Assuming some external application will redirect each unique client with it's unique client ID)
