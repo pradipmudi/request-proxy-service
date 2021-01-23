@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.fw.https.model.RequestStatus;
 
 public class QueueManager{

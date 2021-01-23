@@ -4,11 +4,14 @@ import java.io.IOException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fw.https.model.ClientQuery;
 import com.fw.https.util.HttpUtil;
 
 @SpringBootApplication
@@ -17,17 +20,26 @@ import com.fw.https.util.HttpUtil;
 public class RequestProxyServiceApplication {
 	int count = 0;
 	
-	@GetMapping("/response")
-	public String getMessage(@RequestParam(value="q", required=false) String q, @RequestParam(value="client", required=false) String clientID ) throws IOException {
-		System.out.println(q+" "+clientID);
-		return HttpUtil.processRequest(q,clientID);
+	@RequestMapping(
+		    value = "/response", 
+		    method = RequestMethod.GET)
+	@ResponseBody
+	public String getMessage(@RequestParam(value="q", required=false) String query, @RequestParam(value="client", required=false) String clientID ) throws IOException {
+		ClientQuery clientQuery = new ClientQuery();
+		clientQuery.setClientId(clientID);
+		clientQuery.setQuery(query);
+		
+		return HttpUtil.processRequest(clientQuery);
 	}
 	
 	
-
-	@PostMapping("/response")
-	public String getMessage2(@RequestParam(value="q", required=false) String q, @RequestParam(value="client", required=false) String clientID ) throws IOException {
-		return HttpUtil.processRequest(q,clientID);
+	@RequestMapping(
+		    value = "/response", 
+		    method = RequestMethod.POST,
+		    consumes = "application/json")
+	@ResponseBody
+	public String getMessage2(@RequestBody ClientQuery clientQuery) throws IOException {
+		return HttpUtil.processRequest(clientQuery);
 	}
 
 	public static void main(String[] args) {
