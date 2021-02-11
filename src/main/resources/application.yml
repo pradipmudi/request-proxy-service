@@ -1,4 +1,7 @@
+
 server:
+  tomcat:
+    connection-timeout: 5000
   ssl:
     key-alias: fw-https
     key-store: classpath:fwProxyService.jks
