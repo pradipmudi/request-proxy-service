@@ -3,6 +3,7 @@ package com.fw.https.model;
 public class ClientQuery {
 
 	String query;
+	String requestId;
 	String clientId;
 	
 	public String getQuery() {
@@ -10,6 +11,12 @@ public class ClientQuery {
 	}
 	public void setQuery(String query) {
 		this.query = query;
+	}
+	public String getRequestId() {
+		return requestId;
+	}
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
 	}
 	public String getClientId() {
 		return clientId;
@@ -19,6 +26,6 @@ public class ClientQuery {
 	}
 	@Override
 	public String toString() {
-		return "ClientQuery [query=" + query + ", clientId=" + clientId + "]";
+		return "ClientQuery [query=" + query + ", requestId=" + requestId + ", clientId=" + clientId + "]";
 	}
 }
