@@ -7,17 +7,13 @@ Note : Make sure to configure the port in application.yml, in case the mentioned
 
 Note : 
 --
-While running from some IDE, make sure you delete other files except the folders(not mentioned in the readme) and these files mentioned below : 
-- .DS_Store
-- .gitignore
-- README.md
-- fwProxyService.jks
-- mvnw
-- mvnw.cmd
-- pom.xml
+While running from some IDE, make sure you delete the file mentioned below : 
+- config
 
 1.1. Configuration
 --
+** Install Rabbitmq and start the rabbitmq services **
+
 Usually, we only need to configure the build plugin:
 
 
