@@ -12,7 +12,7 @@ While running from some IDE, make sure you delete the file mentioned below :
 
 1.1. Configuration
 --
-**``Install Rabbitmq and start the rabbitmq services``**
+**``Install Rabbitmq and start the rabbitmq services(Based on OS follow instructions here : https://www.rabbitmq.com/install-windows.html``**
 
 Usually, we only need to configure the build plugin:
 
