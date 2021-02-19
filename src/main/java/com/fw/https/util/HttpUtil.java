@@ -16,7 +16,7 @@ public class HttpUtil {
         
         try (var webClient = new WebClient()) {
         	q = q.replaceAll(" ", "");
-        	String url = "https://www."+q+".com/";
+        	String url = "https://192.168.0.193:7777/query/"+q;
         	
         	webClient.getOptions().setThrowExceptionOnScriptError(false);
         	webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);

@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,47 +38,63 @@ public class RequestController {
 	@Autowired
 	private RabbitTemplate template;
 	
-	@GetMapping("/get/{appName}")
+	/*@GetMapping("/{appName}")
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public String getHttpsGetResponse(@PathVariable String appName, @RequestParam(value="client", required=true) String clientID , HttpServletResponse response) throws IOException {
-		String requestId = UUID.randomUUID().toString();
+	public String getHttpsGetResponse(@PathVariable String appName, @RequestParam(value="client", required=true) String clientID , HttpServletRequest request) throws IOException {
 
 		ClientQuery clientQuery = new ClientQuery();
 		clientQuery.setClientId(clientID);
 		clientQuery.setQuery(appName);
-		clientQuery.setRequestId(requestId);
+		//request.getRequestURL();
+		System.out.println(request.getRequestedSessionId());
+		System.out.println(request.getRequestURL());
+		System.out.println(request.getHeaderNames());
+		//System.out.println(request.getreq);
 		
-		response.setContentType("text/plain");
-		response.setCharacterEncoding("UTF-8");
-		response.setStatus(HttpServletResponse.SC_ACCEPTED);
+//		response.setContentType("text/plain");
+//		response.setCharacterEncoding("UTF-8");
+//		response.setStatus(HttpServletResponse.SC_ACCEPTED);
 		
-		return addRequestToQueue(clientQuery,requestId);
-	}
+		return addRequestToQueue(clientQuery);
+	}*/
 
 	@PostMapping("/{appName}")
-	public String getHttpsPostResponse(@RequestBody ClientQuery clientQuery, @PathVariable String appName, HttpServletResponse response) throws IOException {
-		response.setContentType("text/plain"); 
-		response.setCharacterEncoding("UTF-8");
-		response.setStatus(HttpServletResponse.SC_ACCEPTED);
+	public String getHttpsPostResponse(@RequestBody ClientQuery clientQuery, @PathVariable String appName, HttpServletRequest request) throws IOException {
+//		response.setContentType("text/plain"); 
+//		response.setCharacterEncoding("UTF-8");
+//		response.setStatus(HttpServletResponse.SC_ACCEPTED);
 		
-		String requestId = UUID.randomUUID().toString();
-		clientQuery.setRequestId(requestId);
-		
-		return addRequestToQueue(clientQuery,requestId);
+		return addRequestToQueue(clientQuery);
 	}
 	
-	private String addRequestToQueue(ClientQuery clientQuery, String requestId) throws IOException {
+	@GetMapping("/{appName}")
+	public String getHttpsGetResponse2(@PathVariable String appName, HttpServletRequest request) throws IOException {
+//		response.setContentType("text/plain"); 
+//		response.setCharacterEncoding("UTF-8");
+//		response.setStatus(HttpServletResponse.SC_ACCEPTED);
+		
+		return "Hiii...you have queried for "+appName+" app.";
+	}
+	
+	private String addRequestToQueue(ClientQuery clientQuery) throws IOException {
+		String requestCorrelationId = UUID.randomUUID().toString();
+		clientQuery.setRequestId(requestCorrelationId);
 		RequestStatus requestStatus = new RequestStatus();
-		requestStatus.setRequestId(requestId);
+		requestStatus.setRequestId(requestCorrelationId);
 		requestStatus.setTimestamp(System.currentTimeMillis());
 		requestStatus.setStatus("In process");
 		requestStatus.setMessage("Request query has been processed successfully for "+clientQuery.getQuery()+" app!!!!");
 		
+//		MessagePostProcessor messagePostProcessor = message -> {
+//			MessageProperties messageProperties = message.getMessageProperties();
+//			messageProperties.setReplyTo(QueueProperties.CLIENT_QUEUE);
+//			messageProperties.setCorrelationId(requestCorrelationId);
+//			return message;
+//		};
 		// adding the requests to the queue to be consumed by the hosts
 		template.convertAndSend(QueueProperties.EXCHANGE, QueueProperties.ROUTING_KEY, requestStatus);
 		
 		return HttpUtil.processRequest(clientQuery,requestStatus);
-		
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
