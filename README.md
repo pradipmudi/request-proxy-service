@@ -3,11 +3,11 @@
 To run the project locally : 
 --
 Simply clone the project and load in into any IDE, then just run RequestProxyServiceApplication.java class
-Note : Make sure to configure the port in application.yml, in case the mentioned port is already occupied
 
 Note : 
 --
-While running from some IDE, make sure you delete the file mentioned below : 
+Make sure to configure the port in application.yml, in case the mentioned port is already occupied
+While running from some IDE, also make sure you delete the file mentioned below : 
 - config
 
 1.1. Configuration
