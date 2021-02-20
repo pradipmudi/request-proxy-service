@@ -2,15 +2,22 @@ package com.fw.https.model;
 
 public class ClientQuery {
 
-	String query;
+	String url;
 	String requestId;
 	String clientId;
+	String requestBody;
 	
-	public String getQuery() {
-		return query;
+	public String getRequestBody() {
+		return requestBody;
 	}
-	public void setQuery(String query) {
-		this.query = query;
+	public void setRequestBody(String requestBody) {
+		this.requestBody = requestBody;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getRequestId() {
 		return requestId;
@@ -26,6 +33,7 @@ public class ClientQuery {
 	}
 	@Override
 	public String toString() {
-		return "ClientQuery [query=" + query + ", requestId=" + requestId + ", clientId=" + clientId + "]";
+		return "ClientQuery [url=" + url + ", requestId=" + requestId + ", clientId=" + clientId + ", requestBody="
+				+ requestBody + "]";
 	}
 }

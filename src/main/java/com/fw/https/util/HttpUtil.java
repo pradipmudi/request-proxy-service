@@ -12,11 +12,11 @@ public class HttpUtil {
 	
 	
 
-	public static String getRequest(String q) throws IOException {
+	public static String getRequest(String url) throws IOException {
         
         try (var webClient = new WebClient()) {
-        	q = q.replaceAll(" ", "");
-        	String url = "https://192.168.0.193:7777/query/"+q;
+        	url = url.replaceAll(" ", "");
+        	url = "https://"+url;
         	
         	webClient.getOptions().setThrowExceptionOnScriptError(false);
         	webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
@@ -37,7 +37,7 @@ public class HttpUtil {
 		if(System.currentTimeMillis()-requestStatus.getTimestamp()>5000)
 			return "request took more than 5 seconds";
 		if(response) {
-			return "Success!!! Accessed by HTTPS protocol....... : "+getRequest(clientQuery.getQuery());
+			return "Success!!! Accessed by HTTPS protocol....... : "+getRequest(clientQuery.getUrl());
 		}
 		return "Over 50 requests";
 	}
