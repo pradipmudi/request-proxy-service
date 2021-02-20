@@ -145,8 +145,7 @@ Use Postman or some driver program to make requests :
 <img src="https://github.com/pradipmudi/request-proxy-service/blob/master/testImages/requestBody.png?raw=true"/>
 - Now create **Runner collection and collections with requests added into it **
 <img src="https://github.com/pradipmudi/request-proxy-service/blob/master/testImages/createTestFromPostman.png?raw=true"/>
-- Here I'm replaying(Also other messages based on other factors such as non-http request, rate limiting, wrong api etc.) :
-www.google.com/?q=query
+
 
 Result : 
 ---
