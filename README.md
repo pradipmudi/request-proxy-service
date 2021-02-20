@@ -130,7 +130,7 @@ Main-Class: org.springframework.boot.loader.JarLauncher
 
 
 
-Make Request :
+Testing Instructions :
 ---
 Use Postman or some driver program to make requests : 
 **For Postman**
