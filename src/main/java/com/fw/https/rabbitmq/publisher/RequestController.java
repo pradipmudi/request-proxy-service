@@ -41,13 +41,15 @@ public class RequestController {
 	
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public String getHttpsPostResponse(@RequestParam(value="clientId", required=true) String clientId, @RequestParam(value="url", required=true) String url, HttpServletRequest httpServletRequest) throws IOException {
+	public String getHttpsPostResponse(@RequestParam(value="clientId", required=true) String clientId, @RequestParam(value="url", required=true) String url, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {
+		httpServletResponse.setStatus(200);
 		return addRequestToQueue(clientId,url,httpServletRequest);
 	}
 	
 	@GetMapping("/")
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public String getHttpsGetResponse(@RequestParam(value="clientId", required=true) String clientId, @RequestParam(value="url", required=true) String url, HttpServletRequest httpServletRequest) throws IOException {
+	public String getHttpsGetResponse(@RequestParam(value="clientId", required=true) String clientId, @RequestParam(value="url", required=true) String url, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {
+		httpServletResponse.setStatus(200);
 		return addRequestToQueue(clientId,url,httpServletRequest);
 	}
 	
