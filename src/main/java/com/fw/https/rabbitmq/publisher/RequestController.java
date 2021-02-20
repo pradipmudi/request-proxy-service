@@ -59,6 +59,7 @@ public class RequestController {
 	}*/
 
 	@PostMapping("/{appName}")
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public String getHttpsPostResponse(@RequestBody ClientQuery clientQuery, @PathVariable String appName, HttpServletRequest request) throws IOException {
 //		response.setContentType("text/plain"); 
 //		response.setCharacterEncoding("UTF-8");
@@ -68,6 +69,7 @@ public class RequestController {
 	}
 	
 	@GetMapping("/{appName}")
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public String getHttpsGetResponse2(@PathVariable String appName, HttpServletRequest request) throws IOException {
 //		response.setContentType("text/plain"); 
 //		response.setCharacterEncoding("UTF-8");
