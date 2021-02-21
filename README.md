@@ -3,11 +3,11 @@
 To run the project locally : 
 --
 Simply clone the project and load in into any IDE, then just run RequestProxyServiceApplication.java class
-Note : Make sure to configure the port in application.yml, in case the mentioned port is already occupied
 
 Note : 
 --
-While running from some IDE, make sure you delete the file mentioned below : 
+Make sure to configure the port in application.yml, in case the mentioned port is already occupied
+While running from some IDE, also make sure you delete the file mentioned below : 
 - config
 
 1.1. Configuration
@@ -130,17 +130,26 @@ Main-Class: org.springframework.boot.loader.JarLauncher
 
 
 
-Make Request :
+1.7 Testing Instructions :
 ---
-Use Browser or Postman or some driver program to make requests : 
-- 
-- Target : https://localhost:7777/response?q=query&client=user1 
-- Here I'm replaying(Also other messages based on other factors such as non-http request, rate limiting, wrong api etc.) :
-www.google.com/?q=query
+Use Postman or some driver program to make requests : 
+
+**For Postman**
+- First Go to **"Setting->General->Request"** and disable **SSL Certificate Verification**
+- Then go to Collections and create a request, follow the instructions : 
+	In request URL enter "https://localhost:7777/"
+- Then add **params**
+<img src="https://github.com/pradipmudi/request-proxy-service/blob/master/testImages/params.png?raw=true"/>
+- Next add the **headers**
+<img src="https://github.com/pradipmudi/request-proxy-service/blob/master/testImages/headers.png?raw=true"/>
+- Next add the **Request Body**
+<img src="https://github.com/pradipmudi/request-proxy-service/blob/master/testImages/requestBody.png?raw=true"/>
+- Now create **Runner collection and collections with requests added into it **
+<img src="https://github.com/pradipmudi/request-proxy-service/blob/master/testImages/createTestFromPostman.png?raw=true"/>
 
 
-Where, 
-
-	 - q = query
-     - client = clientID based on which we will manage the requests
-       (Assuming some external application will redirect each unique client with it's unique client ID)
+1.8 Result : 
+---
+**``In result it will return the HTML content of the url appended with 
+"Success!!! Accessed by HTTPS protocol....... :" 
+message.``**
